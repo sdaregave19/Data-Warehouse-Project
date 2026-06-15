@@ -1,0 +1,5 @@
+1. Analysing
+2. coding->check quality of crone layer
+            data transformation
+            insert into silver
+3.Validation
