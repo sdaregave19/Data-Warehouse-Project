@@ -125,8 +125,16 @@ FROM(
 ) as t
 WHERE flag_last=1;
 
-SELECT * FROM silver.crm_cust_info
+SELECT * FROM silver.crm_cust_info;
 
 -- !  ****************************************************************
 -- ? table->crm_prd_info
 
+SELECT 
+prd_id,
+COUNT(*)
+FROM bronze.crm_prd_info
+GROUP BY prd_id
+HAVING COUNT(*)>1 or prd_id is NULL;
+
+SELECT * from bronze.crm_prd_info;
