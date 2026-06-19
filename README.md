@@ -2,99 +2,48 @@
 
 ## Overview
 
-This project demonstrates the design and implementation of a modern Data Warehouse using SQL Server and the Medallion Architecture (Bronze, Silver, Gold). The solution integrates data from multiple source systems, performs ETL processes, and creates analytical data models for business reporting and insights.
-
-## Objectives
-
-* Build a scalable and maintainable data warehouse.
-* Implement ETL pipelines for data ingestion and transformation.
-* Apply data cleansing and standardization techniques.
-* Design dimensional models using a Star Schema.
-* Generate business insights through SQL-based analytics.
-
----
+This project demonstrates the implementation of a modern Data Warehouse using SQL Server and the Medallion Architecture (Bronze, Silver, Gold). The solution integrates CRM and ERP data sources, builds ETL pipelines, and creates analytical data models for business reporting.
 
 ## Architecture
 
-### Bronze Layer
+### Medallion Architecture
 
-* Stores raw data extracted from source systems.
-* Preserves original data without modifications.
-* Serves as the foundation for downstream processing.
+- Bronze Layer: Raw source data
+- Silver Layer: Cleansed and transformed data
+- Gold Layer: Business-ready analytical models
 
-### Silver Layer
+## Data Architecture
 
-* Performs data cleansing, validation, and transformation.
-* Standardizes formats and handles missing or duplicate records.
-* Creates a reliable and consistent dataset.
+![Data Architecture](docs/data_architecture.png)
 
-### Gold Layer
+### Source Systems
 
-* Contains business-ready data models.
-* Implements fact and dimension tables.
-* Optimized for reporting, dashboards, and analytics.
+#### CRM
+- Customer Information
+- Product Information
+- Sales Transactions
 
----
-
-## Data Sources
-
-### CRM Data
-
-* Customer information
-* Product details
-* Sales transactions
-
-### ERP Data
-
-* Operational records
-* Product master data
-* Business process information
-
----
+#### ERP
+- Product Categories
+- Customer Demographics
+- Customer Locations
 
 ## Technologies Used
 
-* SQL Server
-* T-SQL
-* ETL Development
-* Data Warehousing
-* Star Schema Modeling
-* Stored Procedures
-* Views
-* Git & GitHub
-
----
-
-## Project Structure
-
-```text
-Data-Warehouse-Project/
-│
-├── datasets/
-│   ├── source_crm/
-│   └── source_erp/
-│
-├── scripts/
-│   ├── bronze/
-│   ├── silver/
-│   ├── gold/
-│   └── analytics/
-│
-├── docs/
-│   └── data_architecture/
-│
-└── README.md
-```
-
----
+- SQL Server
+- T-SQL
+- ETL
+- Data Warehousing
+- Star Schema
+- Stored Procedures
+- Views
+- Git & GitHub
 
 ## ETL Workflow
 
-1. Extract data from CRM and ERP source files.
-2. Load raw data into the Bronze layer.
-3. Clean and standardize data in the Silver layer.
-4. Transform data into dimensional models in the Gold layer.
-5. Perform analytical queries and generate insights.
-
----
+1. Extract CRM and ERP data
+2. Load data into Bronze Layer
+3. Transform and cleanse in Silver Layer
+4. Build analytical models in Gold Layer
+5. Perform reporting and analytics
 
