@@ -90,10 +90,30 @@ SELECT * from silver.erp_cust_az12
 -- ! table->erp_loc_a101
 SELECT 
 REPLACE(cid,'-','') as cid ,
-cntry
+CASE 
+    WHEN TRIM(cntry)='DE' THEN 'Germany'
+    when TRIM(cntry) in ('US','USA') then 'United States'
+    when TRIM(cntry) = '' OR cntry is NULL then 'n/a'  
+    ELSE  TRIM(cntry)
+END as cntry
 FROM bronze.erp_loc_a101
 
-SELECT * from silver.crm_cust_info
+SELECT DISTINCT cntry
+from bronze.erp_loc_a101
+
+-- insert into silver
+INSERT into silver.erp_loc_a101(
+    cid  ,
+    cntry
+)SELECT 
+REPLACE(cid,'-','') as cid ,
+CASE 
+    WHEN TRIM(cntry)='DE' THEN 'Germany'
+    when TRIM(cntry) in ('US','USA') then 'United States'
+    when TRIM(cntry) = '' OR cntry is NULL then 'n/a'  
+    ELSE  TRIM(cntry)
+END as cntry
+FROM bronze.erp_loc_a101
 
 
 
@@ -102,4 +122,16 @@ SELECT * from silver.crm_cust_info
 SELECT *
 FROM bronze.erp_px_cat_g1v2
 
-SELECT * from silver.crm_prd_info
+SELECT DISTINCT cat_id from silver.crm_prd_info
+-- loading to silver as all clear
+
+insert into silver.erp_px_cat_g1v2(
+    id,
+    cat,
+    subcat,
+    maintenance
+)SELECT *
+FROM bronze.erp_px_cat_g1v2
+
+
+SELECT * from silver.erp_px_cat_g1v2
