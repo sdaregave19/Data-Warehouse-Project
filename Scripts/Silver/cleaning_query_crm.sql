@@ -381,15 +381,4 @@ from bronze.crm_sales_details
 SELECT * FROM silver.crm_sales_details
 
 
--- !  ****************************************************************
--- ! table->erp_cust_az12
-
-SELECT 
-CASE 
-    WHEN cid like 'NAS%' THEN  SUBSTRING(cid,4,LEN(cid))
-    ELSE  cid
-END  ascid,
-bdate,
-gen
-from bronze.erp_cust_az12
 
