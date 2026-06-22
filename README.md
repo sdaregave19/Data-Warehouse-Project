@@ -28,6 +28,11 @@ This project demonstrates the implementation of a modern Data Warehouse using SQ
 - Customer Demographics
 - Customer Locations
 
+## Data Model
+
+![Data Model](docs/data_model.png)
+
+
 ## Technologies Used
 
 - SQL Server
